@@ -5,5 +5,5 @@ from .models import Task
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
-        fields = ('text', 'description')
-        labels = {'text': 'Заголовок', 'description': 'Описание'}
+        fields = ('title', 'text')
+        labels = {'title': 'Заголовок', 'text': 'Описание'}
