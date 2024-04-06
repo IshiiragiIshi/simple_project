@@ -2,20 +2,10 @@
 {% load static %}
 {% block title %}
   <title>Последние обновления на сайте</title>
-  <style type="text/css">
-    .line {
-      border-left: 2px solid lightskyblue;
-      margin-left: 20px;
-      padding-left: 10px;
-    }
-    h1 {
-      border-bottom: 2px solid lightskyblue;
-      padding-bottom: 5px;
-    }
-  </style>
 {% endblock %}
-{%block content%}
-  <div class="container py-5">     
-    <h1>Последние обновления на сайте</h1>
-  </div>
+{%block content%}    
+    {% for i in task_list %}
+    {{i.title}}
+    {{i.start_date}}<br>
+    {% endfor %}
 {%endblock%}

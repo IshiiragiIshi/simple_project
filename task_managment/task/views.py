@@ -8,7 +8,7 @@ def index(request):
     context = {
         'task_list': task_list,
     }
-    return render(request, 'task/index.html', task_list, context)
+    return render(request, 'task/index.html', context)
 
 
 def task_detail(request):
