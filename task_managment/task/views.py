@@ -4,14 +4,21 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 
 def index(request):
+    task_list = Task.objects.order_by('-start_date')
+    context = {
+        'task_list': task_list,
+    }
+    return render(request, 'task/index.html', task_list, context)
+
+
+def task_detail(request):
     task = get_object_or_404(Task)
     title = task.text[0:30]
     context = {
         'task': task,
-        'title': title
+        'title': title,
     }
-    task_list = Task.objects.order_by('-start_date')
-    return render(request, 'task/index.html', task_list, context)
+    return render(request, 'task/index.html', context)
 
 
 def task_create(request):
