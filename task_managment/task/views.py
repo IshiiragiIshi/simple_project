@@ -1,6 +1,6 @@
 from .models import Task
 from .forms import TaskForm
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, redirect
 
 
 def index(request):
@@ -11,14 +11,14 @@ def index(request):
     return render(request, 'task/index.html', context)
 
 
-def task_detail(request):
-    task = get_object_or_404(Task)
+def task_detail(request, id):
+    task = Task.objects.get(id=id)
     title = task.text[0:30]
     context = {
         'task': task,
         'title': title,
     }
-    return render(request, 'task/index.html', context)
+    return render(request, 'task/task_detail.html', context)
 
 
 def task_create(request):

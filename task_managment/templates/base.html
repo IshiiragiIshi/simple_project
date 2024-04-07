@@ -13,15 +13,11 @@
     <meta name="msapplication-TileColor" content="#000">
     <meta name="theme-color" content="#ffffff">
     <!-- Подключен файл со стандартными стилями бустрап -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
     {% block title %}
-      <title>{{ title }}</title>
+    <title>{{ title }}</title>
     {% endblock %}
   </head>
   <body>
-    <header>
-      {% include 'includes/header.html' %}
-    </header>
     <main> 
       {%block content%}
         Контент не завезли
