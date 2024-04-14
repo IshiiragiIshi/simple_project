@@ -11,12 +11,13 @@ def index(request):
     return render(request, 'task/index.html', context)
 
 
-def task_detail(request, id):
-    task = Task.objects.get(id=id)
+def task_detail(request, task_id):
+    task = Task.objects.get(id=task_id)
     title = task.text[0:30]
     context = {
         'task': task,
         'title': title,
+        'task_id': task_id
     }
     return render(request, 'task/task_detail.html', context)
 
@@ -27,8 +28,20 @@ def task_create(request):
         if form.is_valid():
             task = form.save(commit=False)
             task.save()
-            return redirect('task/index.html')
+            return redirect('task:index')
     else:
         form = TaskForm()
     return render(request, 'task/create_task.html', {'from': form})
-# Create your views here.
+
+
+def update(request, task_id):
+    task = Task.objects.get(id=task_id)
+    task.completed = not task.completed
+    task.save()
+    return redirect('task:index')
+
+
+def delete(task_id):
+    task = Task.objects.get(id=task_id)
+    task.delete()
+    return render(redirect('task/index.html'), task, task_id)

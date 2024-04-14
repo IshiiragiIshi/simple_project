@@ -6,9 +6,15 @@
 {% block content %}
 <main>
 <div class="container mt-4">
-    <h3>{{task.start_date}}</h3>
-    <h4>{{task.title}}</h4><button class="ml-12">Завершить</button>
-    <h4>{{task.text}}</h4>
+    <h3>{{task.title}}</h3>
+    <h4>Время начала: {{task.start_date}}</h4><br>
+    <h5>{{task.text}}</h5>
+    {% if task.completed == False %}
+    <h4><span class="badge bg-secondary">Не завершено</span></h4>
+    <a class="btn btn-primary" href="{% url 'task:update' task_id=task_id %}">Завершить</a>
+    {% else %}
+    <h4><span class="badge bg-success">Завершено</span></h4>
+    {% endif %}
     <p><a href="/">Вернуться</a></p>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </div>
