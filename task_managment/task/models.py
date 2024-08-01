@@ -7,7 +7,7 @@ User = get_user_model()
 
 class Task(models.Model):
     title = models.CharField(verbose_name='Заголовок', max_length=40)
-    text = models.TextField()
+    text = models.TextField(verbose_name='Описание')
     start_date = models.DateTimeField(auto_now_add=True)
     completed = models.BooleanField(default=False)
 

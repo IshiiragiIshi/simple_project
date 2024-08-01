@@ -31,12 +31,19 @@ def task_create(request):
             return redirect('task:index')
     else:
         form = TaskForm()
-    return render(request, 'task/create_task.html', {'from': form})
+    return render(request, 'task/create_task.html', {'form': form})
 
 
 def update(request, task_id):
     task = Task.objects.get(id=task_id)
     task.completed = not task.completed
+    task.save()
+    return redirect('task:index')
+
+
+def update2(request, task_id):
+    task = Task.objects.get(id=task_id)
+    task.completed = task.completed
     task.save()
     return redirect('task:index')
 
