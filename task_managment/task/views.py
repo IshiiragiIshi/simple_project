@@ -41,14 +41,7 @@ def update(request, task_id):
     return redirect('task:index')
 
 
-def update2(request, task_id):
-    task = Task.objects.get(id=task_id)
-    task.completed = task.completed
-    task.save()
-    return redirect('task:index')
-
-
-def delete(task_id):
+def delete(request, task_id):
     task = Task.objects.get(id=task_id)
     task.delete()
-    return render(redirect('task/index.html'), task, task_id)
+    return redirect('task:index')

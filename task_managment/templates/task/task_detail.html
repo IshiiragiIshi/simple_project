@@ -5,6 +5,9 @@
 {% endblock title %}
 {% block content %}
 <main>
+    <style>
+        a {display: block; text-align: center;}
+    </style>
 <div class="container mt-4">
     <h3>{{task.title}}</h3>
     <h4>Время начала: {{task.start_date}}</h4><br>
@@ -15,10 +18,8 @@
     {% else %}
     <h4><span class="badge bg-success">Завершено</span></h4>
     {% endif %}
-    {% if task.completed == True %}
-    <a class="btn btn-primary" href="{% url 'task:update2' task_id=task_id %}">Повторить</a>
-    {% endif %}
-    <p><a href="/">Вернуться</a></p>
+    <p><a class="btn btn-primary" href="/">Вернуться</a></p>
+    <p><a class="btn btn-danger" href="{% url 'task:delete' task_id=task_id %}">Удалить</a></p>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </div>
 </main>
